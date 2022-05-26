@@ -51,7 +51,7 @@ namespace ConfigurationModules.BusinessLogicLayer.Services
             return _mapper.Map<List<ConfigSettingsDto>>(_repository.GetProfiles());
         }
 
-        public void SaveSettings(List<ConfigSettingsDto> configs)
+        public void SaveProfiles(List<ConfigSettingsDto> configs)
         {
             if (configs.Count == 0)
             {

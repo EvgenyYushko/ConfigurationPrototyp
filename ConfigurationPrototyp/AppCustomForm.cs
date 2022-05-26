@@ -11,7 +11,7 @@ namespace ConfigurationPrototyp
     public partial class AppCustomForm : Form
     {
         private readonly IConfigurationService _configurationService;
-        private ConfigSettingsDto _settings;
+        private ConfigSettingsDto _profile;
         private List<ConfigSettingsDto> _profiles;
         private bool _operationRuning = false;
 
@@ -47,19 +47,19 @@ namespace ConfigurationPrototyp
             var profile = _profiles.FirstOrDefault(p => p.ProfileName == ProfileName);
             if (profile != null)
             {
-                _settings = null;
-                _settings = profile;
+                _profile = null;
+                _profile = profile;
             }
             else
             {
-                _settings = _configurationService.GetSettings(ProfileName);
-                if (!_profiles.Contains(_settings))
+                _profile = _configurationService.GetSettings(ProfileName);
+                if (!_profiles.Contains(_profile))
                 {
-                    _profiles.Add(_settings);
+                    _profiles.Add(_profile);
                 }
             }
 
-            ProfileName = _settings.ProfileName;
+            ProfileName = _profile.ProfileName;
             SettingToForm();
 
             _operationRuning = false;
@@ -74,20 +74,20 @@ namespace ConfigurationPrototyp
                 cbProfiles.SelectedItem = ProfileName;
             }
 
-            this.Size = _settings.SizeForm;
-            this.tbConnectionString.Text = _settings.ConnectionString;
+            this.Size = _profile.SizeForm;
+            this.tbConnectionString.Text = _profile.ConnectionString;
         }
 
         private void FormToSettings()
         {
-            _settings.SizeForm = this.Size;
-            _settings.ConnectionString = this.tbConnectionString.Text;
+            _profile.SizeForm = this.Size;
+            _profile.ConnectionString = this.tbConnectionString.Text;
         }
 
         private void AppCustomForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             FormToSettings();
-            _configurationService.SaveSettings(_profiles);
+            _configurationService.SaveProfiles(_profiles);
         }
 
         private void btAddProfile_Click(object sender, EventArgs e)
@@ -107,10 +107,10 @@ namespace ConfigurationPrototyp
         {
             _operationRuning = true;
 
-            if (_profiles.Contains(_settings))
+            if (_profiles.Contains(_profile))
             {
-                _profiles.Remove(_settings);
-                _configurationService.DeleteProfile(_settings);
+                _profiles.Remove(_profile);
+                _configurationService.DeleteProfile(_profile);
             }
 
             cbProfiles.Items.Remove(cbProfiles.SelectedItem);
@@ -139,10 +139,10 @@ namespace ConfigurationPrototyp
             }
 
             FormToSettings();
-            if (_profiles.Contains(_settings))
+            if (_profiles.Contains(_profile))
             {
-                _profiles.Remove(_settings);
-                _profiles.Add(_settings);
+                _profiles.Remove(_profile);
+                _profiles.Add(_profile);
             }
 
             ProfileName = cbProfiles.SelectedItem.ToString();

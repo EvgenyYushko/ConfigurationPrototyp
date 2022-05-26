@@ -7,7 +7,7 @@ namespace ConfigurationModules.ServiceLayer.Services
     {
         ConfigSettingsDto GetSettings(string profileName);
 
-        void SaveSettings(List<ConfigSettingsDto> configSettings);
+        void SaveProfiles(List<ConfigSettingsDto> configSettings);
 
         List<ConfigSettingsDto> GetProfiles();
 
