@@ -73,14 +73,14 @@ namespace ConfigurationPrototyp
                 cbProfiles.SelectedItem = ProfileName;
             }
 
-            this.Size = _profile.SizeForm;
-            this.tbConnectionString.Text = _profile.ConnectionString;
+            this.Size = _profile.Config.SizeForm;
+            this.tbConnectionString.Text = _profile.Config.ConnectionString;
         }
 
         private void FormToSettings()
         {
-            _profile.SizeForm = this.Size;
-            _profile.ConnectionString = this.tbConnectionString.Text;
+            _profile.Config.SizeForm = this.Size;
+            _profile.Config.ConnectionString = this.tbConnectionString.Text;
         }
 
         private void AppCustomForm_FormClosing(object sender, FormClosingEventArgs e)

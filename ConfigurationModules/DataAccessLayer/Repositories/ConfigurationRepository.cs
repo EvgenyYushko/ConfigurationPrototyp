@@ -36,7 +36,7 @@ namespace ConfigurationModules.DataAccessLayer.Repositories
             return ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None); 
         }
 
-        public ApplicationConfigSettings GetDefaultApplicationSettings()
+        public Config GetDefaultApplicationSettings()
         {
             var configSettings = (ApplicationSettings)GetSection(nameof(ApplicationSettings));
             return configSettings.Settings;

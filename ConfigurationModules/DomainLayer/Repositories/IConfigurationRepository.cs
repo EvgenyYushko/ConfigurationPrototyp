@@ -5,7 +5,7 @@ namespace ConfigurationModules.DomainLayer.Repositories
 {
     public interface IConfigurationRepository
     {
-        ApplicationConfigSettings GetDefaultApplicationSettings();
+        Config GetDefaultApplicationSettings();
 
         ApplicationConfigSettings GetProfile(string profileName);
 
