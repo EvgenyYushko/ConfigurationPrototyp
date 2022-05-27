@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using AutoMapper;
 using ConfigurationModules.ServiceLayer.Models;
 using ConfigurationModules.ServiceLayer.Services;
 
