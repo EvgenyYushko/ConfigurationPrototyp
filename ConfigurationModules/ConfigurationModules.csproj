@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogicLayer\Services\ConfigurationService.cs" />
+    <Compile Include="Configurations\MapperProfiles\AppSettingsProfile.cs" />
     <Compile Include="DataAccessLayer\Repositories\ConfigurationRepository.cs" />
     <Compile Include="DomainLayer\Models\Base\ApplicationConfigSettings.cs" />
     <Compile Include="DomainLayer\Models\Base\Config.cs" />

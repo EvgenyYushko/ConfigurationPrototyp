@@ -3,7 +3,7 @@ using ConfigurationModules.DomainLayer.Models.Base;
 using ConfigurationModules.ServiceLayer.Models;
 using ConfigurationModules.ServiceLayer.Models.Base;
 
-namespace ConfigurationPrototyp.Configurations.MapperProfiles
+namespace ConfigurationModules.Configurations.MapperProfiles
 {
     public class AppSettingsProfile : Profile
     {

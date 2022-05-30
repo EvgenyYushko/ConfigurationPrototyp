@@ -9,7 +9,5 @@
         public System.Drawing.Size SizeForm { get; set; }
 
         public string ServerName { get; set; }
-
-        public string Test { get; set; }
     }
 }
