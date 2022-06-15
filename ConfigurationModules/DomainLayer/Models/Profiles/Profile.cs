@@ -1,11 +1,11 @@
 ﻿using System.Configuration;
+using ConfigurationModules.DomainLayer.Models.Base;
 
-namespace ConfigurationModules.DomainLayer.Models.Base
+namespace ConfigurationModules.DomainLayer.Models.Profiles
 {
-    public class ApplicationConfigSettings : ConfigurationElement
+    public class Profile : ConfigurationElement
     {
         [ConfigurationProperty(nameof(ProfileName), DefaultValue = "Default", IsKey = true, IsRequired = true)]
-        //[StringValidator(InvalidCharacters = " ~!@#$%^&*()[]{}/;'\"|\\", MinLength = 1, MaxLength = 60)]
         public string ProfileName
         {
             get => ((string) (base[nameof(ProfileName)]));
@@ -30,7 +30,6 @@ namespace ConfigurationModules.DomainLayer.Models.Base
                     this[nameof(Config)] = value;
                 }
             }
-
         }
     }
 }

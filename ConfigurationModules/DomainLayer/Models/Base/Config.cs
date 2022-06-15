@@ -2,6 +2,9 @@
 
 namespace ConfigurationModules.DomainLayer.Models.Base
 {
+    /// <summary>
+    /// Класс настроек приложения
+    /// </summary>
     public class Config : ConfigurationElement
     {
         [ConfigurationProperty(nameof(ConnectionString), DefaultValue = "Default")]

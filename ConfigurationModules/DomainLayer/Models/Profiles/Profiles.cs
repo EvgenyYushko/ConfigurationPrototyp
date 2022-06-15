@@ -1,5 +1,4 @@
 ﻿using System.Configuration;
-using ConfigurationModules.DomainLayer.Models.Base;
 
 namespace ConfigurationModules.DomainLayer.Models.Profiles
 {
@@ -8,20 +7,15 @@ namespace ConfigurationModules.DomainLayer.Models.Profiles
     {
         protected override ConfigurationElement CreateNewElement()
         {
-            return new ApplicationConfigSettings();
+            return new Profile();
         }
 
         protected override object GetElementKey(ConfigurationElement element)
         {
-            return ((ApplicationConfigSettings)(element)).ProfileName;
+            return ((Profile)(element)).ProfileName;
         }
 
-        public ApplicationConfigSettings this[int idx] => (ApplicationConfigSettings)BaseGet(idx);
-
-        public void Clear()
-        {
-            BaseClear();
-        }
+        public Profile this[int idx] => (Profile)BaseGet(idx);
 
         public void Add(ConfigurationElement element)
         {

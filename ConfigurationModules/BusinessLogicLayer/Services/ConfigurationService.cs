@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using ConfigurationModules.DomainLayer.Models.Base;
 using ConfigurationModules.DomainLayer.Repositories;
 using ConfigurationModules.ServiceLayer.Models;
 using ConfigurationModules.ServiceLayer.Services;
+using Profile = ConfigurationModules.DomainLayer.Models.Profiles.Profile;
 
 namespace ConfigurationModules.BusinessLogicLayer.Services
 {
+    /// <inheritdoc cref="IConfigurationService"/>
     public class ConfigurationService : IConfigurationService
     {
         private const string DEFAULT_PROFILE_NAME = "Default";
@@ -21,7 +22,8 @@ namespace ConfigurationModules.BusinessLogicLayer.Services
             _mapper = mapper;
         }
 
-        public ConfigSettingsDto GetSettings(string profileName)
+        /// <inheritdoc />
+        public ConfigSettingsDto GetApplicationSetting(string profileName)
         {
             var settings = GetDefaultApplicationSettings();
             if (profileName.Equals(DEFAULT_PROFILE_NAME))
@@ -47,26 +49,28 @@ namespace ConfigurationModules.BusinessLogicLayer.Services
         private ConfigSettingsDto GetDefaultApplicationSettings() =>
              _mapper.Map<ConfigSettingsDto>(_repository.GetDefaultApplicationSettings());
 
+        /// <inheritdoc />
         public List<ConfigSettingsDto> GetProfiles() =>
              _mapper.Map<List<ConfigSettingsDto>>(_repository.GetProfiles());
 
-        public void SaveProfiles(List<ConfigSettingsDto> configs)
+        /// <inheritdoc />
+        public void SaveProfiles(List<ConfigSettingsDto> profiles)
         {
-            if (configs.Count == 0)
+            if (profiles.Count == 0)
             {
                 return;
             }
 
-            foreach (var config in configs)
+            foreach (var profile in profiles)
             {
-                var foundProfile = _repository.GetProfile(config.ProfileName);
+                var foundProfile = _repository.GetProfile(profile.ProfileName);
                 if (foundProfile != null)
                 {
-                    UpdateProfile(config, foundProfile);
+                    UpdateProfile(profile, foundProfile);
                 }
                 else
                 {
-                    AddProfile(config);
+                    AddProfile(profile);
                 }
             }
 
@@ -75,18 +79,19 @@ namespace ConfigurationModules.BusinessLogicLayer.Services
 
         private void AddProfile(ConfigSettingsDto config)
         {
-            var newProfile = _mapper.Map<ApplicationConfigSettings>(config);
+            var newProfile = _mapper.Map<Profile>(config);
             _repository.AddProfile(newProfile);
         }
 
-        private void UpdateProfile(ConfigSettingsDto config, ApplicationConfigSettings foundProfile) =>
+        private void UpdateProfile(ConfigSettingsDto config, Profile foundProfile) =>
             _mapper.Map(config, foundProfile);
 
-        public void DeleteProfile(ConfigSettingsDto config)
+        /// <inheritdoc />
+        public void DeleteProfile(ConfigSettingsDto profile)
         {
-            if (_repository.GetProfile(config.ProfileName) != null)
+            if (_repository.GetProfile(profile.ProfileName) != null)
             {
-                _repository.DeleteProfile(config.ProfileName);
+                _repository.DeleteProfile(profile.ProfileName);
                 _repository.Save();
             }
         }

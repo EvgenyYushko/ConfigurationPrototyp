@@ -51,7 +51,7 @@ namespace ConfigurationPrototyp
             }
             else
             {
-                _profile = _configurationService.GetSettings(ProfileName);
+                _profile = _configurationService.GetApplicationSetting(ProfileName);
                 if (!_profiles.Contains(_profile))
                 {
                     _profiles.Add(_profile);
