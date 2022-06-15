@@ -9,6 +9,9 @@ namespace ConfigurationModules.BusinessLogicLayer.Services
 {
     public class ConfigurationService : IConfigurationService
     {
+        private const string DEFAULT_PROFILE_NAME = "Default";
+        private const string DEFAULT_FIRST_PROFILE_NAME = "Profile1";
+
         private readonly IConfigurationRepository _repository;
         private readonly IMapper _mapper;
 
@@ -21,9 +24,9 @@ namespace ConfigurationModules.BusinessLogicLayer.Services
         public ConfigSettingsDto GetSettings(string profileName)
         {
             var settings = GetDefaultApplicationSettings();
-            if (profileName.Equals("Default"))
+            if (profileName.Equals(DEFAULT_PROFILE_NAME))
             {
-                settings.ProfileName = "Profile1";
+                settings.ProfileName = DEFAULT_FIRST_PROFILE_NAME;
             }
             else
             {

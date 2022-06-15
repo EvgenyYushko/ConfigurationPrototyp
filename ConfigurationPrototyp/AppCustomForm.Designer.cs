@@ -38,6 +38,10 @@ namespace ConfigurationPrototyp
             this.btDeleteProfile = new System.Windows.Forms.Button();
             this.tbConnectionString = new System.Windows.Forms.TextBox();
             this.lbConnectStr = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbServerName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbAssemblyPath = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -128,11 +132,47 @@ namespace ConfigurationPrototyp
             this.lbConnectStr.TabIndex = 6;
             this.lbConnectStr.Text = "Строка подключения:";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 122);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Имя сервера:";
+            // 
+            // tbServerName
+            // 
+            this.tbServerName.Location = new System.Drawing.Point(143, 119);
+            this.tbServerName.Name = "tbServerName";
+            this.tbServerName.Size = new System.Drawing.Size(130, 20);
+            this.tbServerName.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 151);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Путь к ядру:";
+            // 
+            // tbAssemblyPath
+            // 
+            this.tbAssemblyPath.Location = new System.Drawing.Point(143, 151);
+            this.tbAssemblyPath.Name = "tbAssemblyPath";
+            this.tbAssemblyPath.Size = new System.Drawing.Size(130, 20);
+            this.tbAssemblyPath.TabIndex = 10;
+            // 
             // AppCustomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 274);
+            this.Controls.Add(this.tbAssemblyPath);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.tbServerName);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lbConnectStr);
             this.Controls.Add(this.tbConnectionString);
             this.Controls.Add(this.groupBox2);
@@ -161,6 +201,10 @@ namespace ConfigurationPrototyp
         private System.Windows.Forms.Button btDeleteProfile;
         private System.Windows.Forms.TextBox tbConnectionString;
         private System.Windows.Forms.Label lbConnectStr;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbServerName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbAssemblyPath;
     }
 }
 

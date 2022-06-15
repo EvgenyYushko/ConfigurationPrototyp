@@ -75,12 +75,16 @@ namespace ConfigurationPrototyp
 
             this.Size = _profile.Config.SizeForm;
             this.tbConnectionString.Text = _profile.Config.ConnectionString;
+            this.tbServerName.Text = _profile.Config.ServerName;
+            this.tbAssemblyPath.Text = _profile.Config.AssemblyPath;
         }
 
         private void FormToSettings()
         {
             _profile.Config.SizeForm = this.Size;
             _profile.Config.ConnectionString = this.tbConnectionString.Text;
+            _profile.Config.ServerName = this.tbServerName.Text;
+            _profile.Config.AssemblyPath = this.tbAssemblyPath.Text;
         }
 
         private void AppCustomForm_FormClosing(object sender, FormClosingEventArgs e)

@@ -23,7 +23,14 @@ namespace ConfigurationModules.DomainLayer.Models.Base
         public Config Config
         {
             get => (Config) base[nameof(Config)];
-            set => this[nameof(Config)] = value;
+            set
+            {
+                if (base[nameof(Config)] != value)
+                {
+                    this[nameof(Config)] = value;
+                }
+            }
+
         }
     }
 }
