@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
-using ConfigurationModules.DomainLayer.Models.Application;
 using ConfigurationModules.DomainLayer.Models.Base;
 using ConfigurationModules.DomainLayer.Models.Profiles;
 using ConfigurationModules.DomainLayer.Repositories;
@@ -14,8 +13,8 @@ namespace ConfigurationModules.DataAccessLayer.Repositories
     public class ConfigurationRepository : IConfigurationRepository
     {
         private const string APP_DATA = "AppData";
-        private const string CONFIG_FOLDER_NAME = "PrototypeConfigs";
-        private const string CONFIG_FILE_NAME = "App.config";
+        private const string CONFIG_FOLDER_NAME = "PrototypeConfigs v2.0";
+        private const string CONFIG_FILE_NAME = "ProfilesSettings.config";
 
         private readonly string _configFilePath;
         private Configuration _config;
@@ -37,34 +36,26 @@ namespace ConfigurationModules.DataAccessLayer.Repositories
             return ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None); 
         }
         
-        public Config GetDefaultApplicationSettings()
-        {
-           var configSettings = (ApplicationSettings)GetSection(nameof(ApplicationSettings));
-           return configSettings.Settings;
-        }
+        public Config GetDefaultApplicationSettings() => new();
 
         public ApplicationConfigSettings GetProfile(string profileName)
         {
-            var profilesSettings = GetProfilesSettings();
-            return (ApplicationConfigSettings)profilesSettings.Get(profileName);
+            return (ApplicationConfigSettings)GetProfilesSettings().Get(profileName);
         }
 
         public List<ApplicationConfigSettings> GetProfiles()
         {
-            var profilesSettings = GetProfilesSettings();
-            return profilesSettings.OfType<ApplicationConfigSettings>().ToList();
+           return GetProfilesSettings().OfType<ApplicationConfigSettings>().ToList();
         }
 
         public void AddProfile(ApplicationConfigSettings newProfile)
         {
-            var profilesSettings = GetProfilesSettings();
-            profilesSettings.Add(newProfile);
+            GetProfilesSettings().Add(newProfile);
         }
 
         public void DeleteProfile(string newProfile)
         {
-            var profilesSettings = GetProfilesSettings();
-            profilesSettings.Delete(newProfile);
+            GetProfilesSettings().Delete(newProfile);
         }
 
         private Profiles GetProfilesSettings()

@@ -44,15 +44,11 @@ namespace ConfigurationModules.BusinessLogicLayer.Services
             return settings;
         }
 
-        private ConfigSettingsDto GetDefaultApplicationSettings()
-        {
-            return _mapper.Map<ConfigSettingsDto>(_repository.GetDefaultApplicationSettings());
-        }
+        private ConfigSettingsDto GetDefaultApplicationSettings() =>
+             _mapper.Map<ConfigSettingsDto>(_repository.GetDefaultApplicationSettings());
 
-        public List<ConfigSettingsDto> GetProfiles()
-        {
-            return _mapper.Map<List<ConfigSettingsDto>>(_repository.GetProfiles());
-        }
+        public List<ConfigSettingsDto> GetProfiles() =>
+             _mapper.Map<List<ConfigSettingsDto>>(_repository.GetProfiles());
 
         public void SaveProfiles(List<ConfigSettingsDto> configs)
         {
@@ -83,10 +79,8 @@ namespace ConfigurationModules.BusinessLogicLayer.Services
             _repository.AddProfile(newProfile);
         }
 
-        private void UpdateProfile(ConfigSettingsDto config, ApplicationConfigSettings foundProfile)
-        {
+        private void UpdateProfile(ConfigSettingsDto config, ApplicationConfigSettings foundProfile) =>
             _mapper.Map(config, foundProfile);
-        }
 
         public void DeleteProfile(ConfigSettingsDto config)
         {

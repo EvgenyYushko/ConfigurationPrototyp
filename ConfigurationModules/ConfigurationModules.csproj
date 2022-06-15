@@ -83,7 +83,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLayer\Models\Base\ConfigBaseDto.cs" />
     <Compile Include="ServiceLayer\Models\ConfigSettingsDto.cs" />
-    <Compile Include="DomainLayer\Models\Application\ApplicationSettings.cs" />
     <Compile Include="DomainLayer\Models\Profiles\ProfilesSettings.cs" />
     <Compile Include="ServiceLayer\Services\IConfigurationService.cs" />
   </ItemGroup>
