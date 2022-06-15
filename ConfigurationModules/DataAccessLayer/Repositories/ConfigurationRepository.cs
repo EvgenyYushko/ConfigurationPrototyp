@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -24,7 +25,7 @@ namespace ConfigurationModules.DataAccessLayer.Repositories
             _configFilePath = Path.Combine(Environment.GetEnvironmentVariable(APP_DATA), CONFIG_FOLDER_NAME, CONFIG_FILE_NAME);
         }
 
-        private Configuration Configuration => _config ??= InitConfig();
+        private Configuration Configurations => _config ??= InitConfig();
 
         private Configuration InitConfig()
         {
@@ -35,11 +36,11 @@ namespace ConfigurationModules.DataAccessLayer.Repositories
 
             return ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None); 
         }
-
-        public ApplicationConfigSettings GetDefaultApplicationSettings()
+        
+        public Config GetDefaultApplicationSettings()
         {
-            var configSettings = (ApplicationSettings)GetSection(nameof(ApplicationSettings));
-            return configSettings.Settings;
+           var configSettings = (ApplicationSettings)GetSection(nameof(ApplicationSettings));
+           return configSettings.Settings;
         }
 
         public ApplicationConfigSettings GetProfile(string profileName)
@@ -72,11 +73,11 @@ namespace ConfigurationModules.DataAccessLayer.Repositories
             return profilesSection.Profiles;
         }
 
-        private ConfigurationSection GetSection(string sectionName) => Configuration.Sections[sectionName];
+        private ConfigurationSection GetSection(string sectionName) => Configurations.Sections[sectionName];
 
         public void Save()
         {
-            Configuration.Save(ConfigurationSaveMode.Modified);
+            Configurations.Save(ConfigurationSaveMode.Modified);
             _config = null;
         }
 

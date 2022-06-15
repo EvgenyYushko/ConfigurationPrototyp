@@ -82,7 +82,6 @@
     <Compile Include="AppCustomForm.Designer.cs">
       <DependentUpon>AppCustomForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Configurations\MapperProfiles\AppSettingsProfile.cs" />
     <Compile Include="InjectModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

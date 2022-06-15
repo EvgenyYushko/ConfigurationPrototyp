@@ -1,15 +1,11 @@
-﻿namespace ConfigurationModules.ServiceLayer.Models
+﻿using ConfigurationModules.ServiceLayer.Models.Base;
+
+namespace ConfigurationModules.ServiceLayer.Models
 {
     public class ConfigSettingsDto 
     {
         public string ProfileName { get; set; }
 
-        public string ConnectionString { get; set; }
-
-        public string AssemblyPath { get; set; }
-
-        public System.Drawing.Size SizeForm { get; set; }
-
-        public string ServerName { get; set; }
+        public ConfigBaseDto Config { get; set; }
     }
 }

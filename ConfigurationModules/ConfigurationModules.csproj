@@ -73,12 +73,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogicLayer\Services\ConfigurationService.cs" />
+    <Compile Include="Configurations\MapperProfiles\AppSettingsProfile.cs" />
     <Compile Include="DataAccessLayer\Repositories\ConfigurationRepository.cs" />
     <Compile Include="DomainLayer\Models\Base\ApplicationConfigSettings.cs" />
+    <Compile Include="DomainLayer\Models\Base\Config.cs" />
     <Compile Include="DomainLayer\Models\Profiles\Profiles.cs" />
     <Compile Include="DomainLayer\Repositories\IConfigurationRepository.cs" />
     <Compile Include="InjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceLayer\Models\Base\ConfigBaseDto.cs" />
     <Compile Include="ServiceLayer\Models\ConfigSettingsDto.cs" />
     <Compile Include="DomainLayer\Models\Application\ApplicationSettings.cs" />
     <Compile Include="DomainLayer\Models\Profiles\ProfilesSettings.cs" />
