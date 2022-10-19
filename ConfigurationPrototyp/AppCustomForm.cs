@@ -51,7 +51,7 @@ namespace ConfigurationPrototyp
             }
             else
             {
-                _profile = _configurationService.GetSettings(ProfileName);
+                _profile = _configurationService.GetApplicationSetting(ProfileName);
                 if (!_profiles.Contains(_profile))
                 {
                     _profiles.Add(_profile);
@@ -62,6 +62,8 @@ namespace ConfigurationPrototyp
             SettingToForm();
 
             _operationRuning = false;
+
+            propertyGrid1.ExpandAllGridItems();
         }
 
         private void SettingToForm()
@@ -74,17 +76,13 @@ namespace ConfigurationPrototyp
             }
 
             this.Size = _profile.Config.SizeForm;
-            this.tbConnectionString.Text = _profile.Config.ConnectionString;
-            this.tbServerName.Text = _profile.Config.ServerName;
-            this.tbAssemblyPath.Text = _profile.Config.AssemblyPath;
+            this.propertyGrid1.SelectedObject = _profile;
         }
 
         private void FormToSettings()
         {
             _profile.Config.SizeForm = this.Size;
-            _profile.Config.ConnectionString = this.tbConnectionString.Text;
-            _profile.Config.ServerName = this.tbServerName.Text;
-            _profile.Config.AssemblyPath = this.tbAssemblyPath.Text;
+            _profile = (ConfigSettingsDto)this.propertyGrid1.SelectedObject;
         }
 
         private void AppCustomForm_FormClosing(object sender, FormClosingEventArgs e)
