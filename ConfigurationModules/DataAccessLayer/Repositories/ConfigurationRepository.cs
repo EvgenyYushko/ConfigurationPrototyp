@@ -61,7 +61,7 @@ namespace ConfigurationModules.DataAccessLayer.Repositories
 
         private Profiles GetProfilesSettings()
         {
-            var profilesSection = (ProfilesSettings)GetSection(nameof(ProfilesSettings));
+            var profilesSection = (ProfilesSection)GetSection(nameof(ProfilesSection));
             return profilesSection.Profiles;
         }
 

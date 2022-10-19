@@ -2,7 +2,7 @@
 
 namespace ConfigurationModules.DomainLayer.Models.Profiles
 {
-    public class ProfilesSettings : ConfigurationSection
+    public class ProfilesSection : ConfigurationSection
     {
         [ConfigurationProperty(nameof(Profiles))]
         public Profiles Profiles => (Profiles)base[nameof(Profiles)];
